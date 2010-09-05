@@ -1,0 +1,174 @@
+# TODO: http://www.cocoabuilder.com/archive/cocoa/2895-forcing-bundle-localization-at-runtime.html
+# /Applications/TextEdit.app/Contents/MacOS/TextEdit -AppleLanguages "(German, French, English )"
+
+require 'rake'
+require 'json'
+require "open3"
+include Open3
+
+################################################################################################
+# constants
+
+ROOT_DIR = File.expand_path('.')
+SIKULI_DIR = File.join(ROOT_DIR, 'sikuli')
+CONFIGS_DIR = File.join(SIKULI_DIR, 'configs')
+STORIES_DIR = File.join(SIKULI_DIR, 'stories')
+PLIST_PATH = File.expand_path("~/Library/Preferences/com.apple.finder.plist")
+
+################################################################################################
+# dependencies
+
+begin
+    require 'colored'
+rescue LoadError
+    raise 'You must "gem install colored" to use terminal colors'
+end
+
+################################################################################################
+# helpers
+
+def die(msg, status=1)
+    puts "Error[#{status||$?}]: #{msg}".red
+    exit status||$?
+end
+
+def sys(cmd)
+    puts "> #{cmd}".yellow
+    system(cmd)
+end
+
+def make_unique_path(path)
+    new_path = path
+    
+    ext = File.extname(path)
+    dir, base = File.split(path)
+    base = File.basename(base, ext)
+    counter = 1
+    while (File.exists?(new_path)) do
+       counter += 1 
+       die "unable to create unique path: "+path if counter>=100
+       new_path = File.join(dir, base+sprintf("%02d", counter)+ext)
+    end
+    
+    new_path
+end
+
+################################################################################################
+# routines
+
+$defaults = {
+    "config" => "default",
+    "width" => 740,
+    "height" => 480
+}
+
+def expand_config_path(name)
+    path = File.join(CONFIGS_DIR, File.basename(name, ".plist")+".plist")
+    die("config does not exists: "+path) unless File.exists?(path)
+    path
+end
+
+def relaunch_totalfinder(options)
+    puts options.to_json
+    
+    sys('osascript -e "tell application \"Finder\" to quit"')
+    sleep 1
+    
+    config_path = expand_config_path(options["config"])
+    sys("cp \"#{config_path}\" \"#{PLIST_PATH}\"")
+    
+    # IO.popen('/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder -AppleLanguages "(German, French, English )"')
+    sys('open /System/Library/CoreServices/Finder.app')
+    sleep 1
+    sys('open /Applications/TotalFinder.app')
+end
+
+def run_story(path)
+    ext = File.extname(path)
+    dir, base = File.split(path)
+    base = File.basename(base, ext)
+
+    filename = File.join(path, base+".py")
+    
+    prologue_path = File.join(dir, "..", "prologue.py")
+
+    lines = []
+
+    File.open(prologue_path, "r") do |f|
+        f.each do |line|
+            lines << line
+        end
+    end
+    
+    lines << "\n" # just make sure prologue is separated from the main file
+
+    File.open(filename, "r") do |f|
+        f.each do |line|
+            lines << line
+        end
+    end
+
+    target = File.join(path, "launcher.py")
+    
+    File.open(target, "w") do |f|
+      f << lines.join
+    end
+    
+    Dir.chdir(path) do
+        sys("python launcher.py")
+    end
+    
+    `rm "#{target}"`
+    
+    # run optional ruby stript
+    post = File.join(path, "post.rb")
+    if File.exists?(post) then
+        sys(post)
+    end
+end
+
+def execute_story(dir, options = {})
+    die "story dir does not exits: "+dir unless File.exists?(dir)
+    
+    file_options = {}
+    config_path = File.join(dir, "config.json")
+    if File.exists?(config_path) then
+        file_options = JSON.parse(File.read(config_path))
+    end
+    
+    o = $defaults.merge(file_options).merge(options)
+    
+    relaunch_totalfinder(o)
+    sleep 4
+    run_story(dir)
+    
+    # find the screenshots and post process them
+    
+    
+
+    #sys('osascript -e "tell application \"Finder\" to quit"')
+end
+
+################################################################################################
+# tasks
+
+desc "runs tests"
+task :test do
+    puts "TODO".red
+end
+
+desc "prepares screenshots"
+task :screens do
+    story = File.join(STORIES_DIR, "basic-screenshots.sikuli")
+    execute_story(story)
+end
+
+desc "copies current config and saves it into configs"
+task :config do
+    name = ENV["name"] || "config.plist"
+    path = make_unique_path(File.join(CONFIGS_DIR, name))
+    sys("cp \"#{PLIST_PATH}\" \"#{path}\"")
+    sys("plutil -convert xml1 \"#{path}\"")
+end
+
+task :default => :test
