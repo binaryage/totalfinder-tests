@@ -73,7 +73,14 @@ def grab_preferences():
     type(",", KEY_CMD)
 
     # Visor
-    click("../../shared/pref-totalfinder-icon.png")
+    if exists("../../shared/pref-totalfinder-icon.png", 1):
+        click("../../shared/pref-totalfinder-icon.png")
+    else:
+        # toolbar icon is hidden under expansion arrow
+        click("../../shared/pref-more-icon.png")
+        click("../../shared/pref-more-menu.png")
+        hover("../../shared/pref-more-icon.png")
+        
     take_shot()
     
     step() # Asepsis
@@ -82,7 +89,7 @@ def grab_preferences():
 
 #######################################################     
     
-grab_main()
-grab_dual_mode()
-grab_menus()
+#grab_main()
+#grab_dual_mode()
+#grab_menus()
 grab_preferences()

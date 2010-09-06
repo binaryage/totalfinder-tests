@@ -11,8 +11,6 @@ end
 ##########################################################################################
 
 ROOT_DIR = File.expand_path(File.dirname(__FILE__))
-PRODUCTS_DIR = File.expand_path(File.join(ROOT_DIR, "..", "..", "..", "products"))
-SCREENS_DIR = File.expand_path(File.join(PRODUCTS_DIR, "screens"))
 
 ##########################################################################################
 
@@ -30,15 +28,14 @@ end
 ##########################################################################################
 
 def copy_screenshot(file,  name)
-    dest = File.join(SCREENS_DIR, name)
-    `cp "#{file}" "#{dest}"`
+    `cp "#{file}" "#{name}"`
 end
 
 def compose_screenshot(file1, file2, name)
     image1 = ImageList.new(file1)
     image2 = ImageList.new(file2)
     result = image1.composite(image2, Magick::SouthGravity, 0, 55, Magick::OverCompositeOp)
-    result.write(File.join(SCREENS_DIR, name))
+    result.write(name)
 end
 
 def compose_dual_screenshot(chrome, left, right, name)
@@ -47,7 +44,7 @@ def compose_dual_screenshot(chrome, left, right, name)
     image3 = ImageList.new(right)
     result = image1.composite(image2, Magick::SouthEastGravity, 40, 55, Magick::OverCompositeOp)
     result2 = result.composite(image3, Magick::SouthWestGravity, 40, 55, Magick::OverCompositeOp)
-    result2.write(File.join(SCREENS_DIR, name))
+    result2.write(name)
 end
 
 ##########################################################################################

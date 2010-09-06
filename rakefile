@@ -14,6 +14,10 @@ SIKULI_DIR = File.join(ROOT_DIR, 'sikuli')
 CONFIGS_DIR = File.join(SIKULI_DIR, 'configs')
 STORIES_DIR = File.join(SIKULI_DIR, 'stories')
 PLIST_PATH = File.expand_path("~/Library/Preferences/com.apple.finder.plist")
+PRODUCTS_DIR = File.expand_path(File.join(ROOT_DIR, "products"))
+SCREENS_DIR = File.expand_path(File.join(PRODUCTS_DIR, "screens"))
+TOTALFINDER_BUNDLE = "/Applications/TotalFinder.app/Contents/Resources/TotalFinder.bundle"
+TOTALFINDER_RESOURCES = File.join(TOTALFINDER_BUNDLE, "Contents", "Resources")
 
 ################################################################################################
 # dependencies
@@ -59,7 +63,8 @@ end
 $defaults = {
     "config" => "default",
     "width" => 740,
-    "height" => 480
+    "height" => 480,
+    "languages" => ["English"]
 }
 
 def expand_config_path(name)
@@ -68,22 +73,22 @@ def expand_config_path(name)
     path
 end
 
-def relaunch_totalfinder(options)
+def relaunch_totalfinder(options, language)
     puts options.to_json
     
     sys('osascript -e "tell application \"Finder\" to quit"')
-    sleep 3
+    sleep 2
     
     config_path = expand_config_path(options["config"])
     sys("cp \"#{config_path}\" \"#{PLIST_PATH}\"")
     
-    # IO.popen('/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder -AppleLanguages "(German, French, English )"')
-    # sys('open /System/Library/CoreServices/Finder.app')
-    # sleep 3
+    IO.popen('/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder -AppleLanguages "('+language+',English)" 2&> /dev/null')
+    sleep 2
     sys('open /Applications/TotalFinder.app')
+    sleep 2
 end
 
-def run_story(path)
+def run_story(path, language)
     ext = File.extname(path)
     dir, base = File.split(path)
     base = File.basename(base, ext)
@@ -120,10 +125,15 @@ def run_story(path)
     
     `rm "#{target}"`
     
+    dest = File.join(SCREENS_DIR, language)
+    
     # run optional ruby stript
     post = File.join(path, "post.rb")
     if File.exists?(post) then
-        sys(post)
+        sys("mkdir -p \"#{dest}\"") unless File.exists?(dest)
+        Dir.chdir(dest) do
+            sys(post)
+        end
     end
 end
 
@@ -138,9 +148,10 @@ def execute_story(dir, options = {})
     
     o = $defaults.merge(file_options).merge(options)
     
-    relaunch_totalfinder(o)
-    sleep 4
-    run_story(dir)
+    o["languages"].each do |language| 
+        relaunch_totalfinder(o, language)
+        run_story(dir, language)
+    end
     
     #sys('osascript -e "tell application \"Finder\" to quit"')
 end
@@ -155,8 +166,17 @@ end
 
 desc "prepares screenshots"
 task :screens do
+    langs = ENV["langs"] || "English"
+    if langs=='all' then
+        langs = []
+        Dir.glob(File.join(TOTALFINDER_RESOURCES, "*.lproj")) do |dir|
+            langs << File.basename(dir, ".lproj")
+        end
+    else
+        langs = langs.split(",")
+    end
     story = File.join(STORIES_DIR, "basic-screenshots.sikuli")
-    execute_story(story)
+    execute_story(story, { "languages" => langs })
 end
 
 desc "copies current config and saves it into configs"
