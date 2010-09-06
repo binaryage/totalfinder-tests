@@ -18,6 +18,8 @@ PRODUCTS_DIR = File.expand_path(File.join(ROOT_DIR, "products"))
 SCREENS_DIR = File.expand_path(File.join(PRODUCTS_DIR, "screens"))
 TOTALFINDER_BUNDLE = "/Applications/TotalFinder.app/Contents/Resources/TotalFinder.bundle"
 TOTALFINDER_RESOURCES = File.join(TOTALFINDER_BUNDLE, "Contents", "Resources")
+FINDER_DIR = '/System/Library/CoreServices/Finder.app'
+FINDER_RESOURCES_DIR = File.join(FINDER_DIR, 'Contents/Resources')
 
 ################################################################################################
 # dependencies
@@ -170,11 +172,17 @@ task :screens do
     if langs=='all' then
         langs = []
         Dir.glob(File.join(TOTALFINDER_RESOURCES, "*.lproj")) do |dir|
-            langs << File.basename(dir, ".lproj")
+            base = File.basename(dir)
+            if not File.exists?(File.join(FINDER_RESOURCES_DIR, base)) then
+                puts "folder #{base} is not present in #{FINDER_RESOURCES_DIR} - skipping (in i18n you should run> rake normalize)".red
+            else
+                langs << File.basename(dir, ".lproj")
+            end
         end
     else
         langs = langs.split(",")
     end
+    puts "running story " + "basic-screenshots.sikuli".green + " with languages " + langs.join(", ").yellow
     story = File.join(STORIES_DIR, "basic-screenshots.sikuli")
     execute_story(story, { "languages" => langs })
 end

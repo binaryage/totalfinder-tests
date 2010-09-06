@@ -89,7 +89,7 @@ def grab_preferences():
 
 #######################################################     
     
-#grab_main()
-#grab_dual_mode()
-#grab_menus()
+grab_main()
+grab_dual_mode()
+grab_menus()
 grab_preferences()
