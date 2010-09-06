@@ -46,3 +46,11 @@ class Button:
     LEFT = 1
     OTHER = 2
     RIGHT = 3
+    
+# override Sikuli version
+def switchApp(name):
+    import os
+    import time
+    os.system('osascript -e "tell application \\"'+name+'\\" to activate"')
+    time.sleep(2)
+    

@@ -1,12 +1,10 @@
 import time
 
 switchApp("Finder")
-time.sleep(0.5)
 
 def take_shot():
     type("4", KEY_CMD + KEY_SHIFT)
     type(" ")
-    time.sleep(0.2)
     mouseDown(Button.LEFT)
     mouseUp(Button.LEFT)
 
@@ -18,7 +16,6 @@ def grab_main():
     take_shot()
     hover("../../shared/search-box.png")
     take_shot()
-    time.sleep(0.5)
 
 #######################################################     
 # grab the dual-mode screenshot
@@ -49,13 +46,10 @@ def grab_dual_mode():
 def grab_menus():
     def next_menu():
         press(KEY_RIGHT)
-        time.sleep(0.2)
         hover("../../shared/selected-top-menu-item.png")
-        time.sleep(0.2)
         take_shot()
 
     click("../../shared/system-apple.png")
-    time.sleep(1)
     hover("../../shared/next-menu.png")
 
     next_menu() # Finder menu
@@ -73,18 +67,13 @@ def grab_menus():
 def grab_preferences():
     def step():
         click("../../shared/pref-next-page.png")
-        time.sleep(0.5)
         take_shot()
         
-    time.sleep(1)
-    type(",", KEY_CMD)
-    time.sleep(1)
-
     switchApp("Finder")
+    type(",", KEY_CMD)
 
     # Visor
     click("../../shared/pref-totalfinder-icon.png")
-    time.sleep(0.5)
     take_shot()
     
     step() # Asepsis

@@ -72,14 +72,14 @@ def relaunch_totalfinder(options)
     puts options.to_json
     
     sys('osascript -e "tell application \"Finder\" to quit"')
-    sleep 1
+    sleep 3
     
     config_path = expand_config_path(options["config"])
     sys("cp \"#{config_path}\" \"#{PLIST_PATH}\"")
     
     # IO.popen('/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder -AppleLanguages "(German, French, English )"')
-    sys('open /System/Library/CoreServices/Finder.app')
-    sleep 1
+    # sys('open /System/Library/CoreServices/Finder.app')
+    # sleep 3
     sys('open /Applications/TotalFinder.app')
 end
 
@@ -142,10 +142,6 @@ def execute_story(dir, options = {})
     sleep 4
     run_story(dir)
     
-    # find the screenshots and post process them
-    
-    
-
     #sys('osascript -e "tell application \"Finder\" to quit"')
 end
 
