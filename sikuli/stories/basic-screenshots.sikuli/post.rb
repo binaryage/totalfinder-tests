@@ -27,18 +27,33 @@ end
 
 ##########################################################################################
 
-def copy_screenshot(file,  name)
+def crop_screenshot(list, name, x, y, w, h)
+    file = list.shift
+    image = ImageList.new(file)
+    w = image.columns unless w
+    h = image.rows unless h
+    image.crop!(x, y, w, h)
+    image.write(name)
+end
+
+def copy_screenshot(list,  name)
+    file = list.shift
     `cp "#{file}" "#{name}"`
 end
 
-def compose_screenshot(file1, file2, name)
+def compose_screenshot(list, name)
+    file1 = list.shift
+    file2 = list.shift
     image1 = ImageList.new(file1)
     image2 = ImageList.new(file2)
     result = image1.composite(image2, Magick::SouthGravity, 0, 55, Magick::OverCompositeOp)
     result.write(name)
 end
 
-def compose_dual_screenshot(chrome, left, right, name)
+def compose_dual_screenshot(list, name)
+    chrome = list.shift
+    left = list.shift
+    right = list.shift
     image1 = ImageList.new(chrome)
     image2 = ImageList.new(left)
     image3 = ImageList.new(right)
@@ -54,21 +69,23 @@ grab_dir = File.expand_path("~/Desktop") if grab_dir =~ /does not exist/
 
 list = Dir.list({:directory => grab_dir, :pattern => "*.png", :order => 'DESC'})
 
-list = list[0..15].reverse
+list = list[0..16].reverse
 puts list
 
-compose_screenshot(list[0], list[1], "tabs.png")
-compose_dual_screenshot(list[2], list[3], list[4], "dual-mode.png")
+compose_screenshot(list, "tabs.png")
+compose_dual_screenshot(list, "dual-mode.png")
 
-copy_screenshot(list[5], "menu-finder.png")
-copy_screenshot(list[6], "menu-file.png")
-copy_screenshot(list[7], "menu-edit.png")
-copy_screenshot(list[8], "menu-view.png")
-copy_screenshot(list[9], "menu-go.png")
-copy_screenshot(list[10], "menu-window.png")
-copy_screenshot(list[11], "menu-help.png")
+crop_screenshot(list, "main-menu.png", 0, 0, 750, 0)
 
-copy_screenshot(list[12], "pref-visor.png")
-copy_screenshot(list[13], "pref-asepsis.png")
-copy_screenshot(list[14], "pref-tweaks.png")
-copy_screenshot(list[15], "pref-about.png")
+copy_screenshot(list, "menu-finder.png")
+copy_screenshot(list, "menu-file.png")
+copy_screenshot(list, "menu-edit.png")
+copy_screenshot(list, "menu-view.png")
+copy_screenshot(list, "menu-go.png")
+copy_screenshot(list, "menu-window.png")
+copy_screenshot(list, "menu-help.png")
+
+copy_screenshot(list, "pref-visor.png")
+copy_screenshot(list, "pref-asepsis.png")
+copy_screenshot(list, "pref-tweaks.png")
+copy_screenshot(list, "pref-about.png")

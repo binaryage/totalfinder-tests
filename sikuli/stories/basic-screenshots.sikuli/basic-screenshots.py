@@ -40,6 +40,11 @@ def grab_dual_mode():
     # exit dual mode
     type("u", KEY_CMD)
 
+#######################################################     
+# main menu
+def grab_main_menu():
+    hover("../../shared/system-apple.png")
+    take_shot()
 
 #######################################################     
 # do screens of menus
@@ -91,5 +96,6 @@ def grab_preferences():
     
 grab_main()
 grab_dual_mode()
+grab_main_menu()
 grab_menus()
 grab_preferences()
