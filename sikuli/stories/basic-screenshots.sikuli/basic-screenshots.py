@@ -28,7 +28,7 @@ def grab_dual_mode():
     take_shot()
 
     # in dual mode we need to grab left and right finder windows
-    o = findAll("../../shared/search-box.png")
+    o = findAll("../../shared/toolbar-back-forward.png")
     if o[0]:
         hover(o[0])
         take_shot()
