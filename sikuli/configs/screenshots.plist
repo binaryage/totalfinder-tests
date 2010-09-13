@@ -26,68 +26,14 @@
 			<integer>137</integer>
 			<key>TargetPath</key>
 			<array>
-				<string>file://localhost/Users/darwin/</string>
+				<string>file://localhost/Volumes/P1/</string>
 			</array>
 			<key>TargetURL</key>
-			<string>file://localhost/Users/darwin/</string>
+			<string>file://localhost/Volumes/P1/</string>
 			<key>ViewStyle</key>
 			<string>List</string>
 			<key>WindowBounds</key>
-			<string>{{0, 4}, {1920, 586}}</string>
-		</dict>
-		<dict>
-			<key>BrowserViewState</key>
-			<dict>
-				<key>ListViewScrollOrigin</key>
-				<string>{0, 2027}</string>
-			</dict>
-			<key>ShowPathbar</key>
-			<false/>
-			<key>ShowSidebar</key>
-			<true/>
-			<key>ShowStatusBar</key>
-			<true/>
-			<key>ShowToolbar</key>
-			<true/>
-			<key>SidebarWidth</key>
-			<integer>136</integer>
-			<key>TargetPath</key>
-			<array>
-				<string>file://localhost/Applications/</string>
-			</array>
-			<key>TargetURL</key>
-			<string>file://localhost/Applications/</string>
-			<key>ViewStyle</key>
-			<string>List</string>
-			<key>WindowBounds</key>
-			<string>{{1087, 150}, {486, 887}}</string>
-		</dict>
-		<dict>
-			<key>BrowserViewState</key>
-			<dict>
-				<key>ListViewScrollOrigin</key>
-				<string>{0, 0}</string>
-			</dict>
-			<key>ShowPathbar</key>
-			<false/>
-			<key>ShowSidebar</key>
-			<true/>
-			<key>ShowStatusBar</key>
-			<true/>
-			<key>ShowToolbar</key>
-			<true/>
-			<key>SidebarWidth</key>
-			<integer>137</integer>
-			<key>TargetPath</key>
-			<array>
-				<string>file://localhost/Users/darwin/</string>
-			</array>
-			<key>TargetURL</key>
-			<string>file://localhost/Users/darwin/</string>
-			<key>ViewStyle</key>
-			<string>List</string>
-			<key>WindowBounds</key>
-			<string>{{598, 150}, {975, 887}}</string>
+			<string>{{598, 105}, {975, 887}}</string>
 		</dict>
 	</array>
 	<key>ComputerViewSettings</key>
@@ -227,6 +173,8 @@
 	<key>SidebarDevicesSectionDisclosedState</key>
 	<true/>
 	<key>SidebarPlacesSectionDisclosedState</key>
+	<true/>
+	<key>SidebarSearchesSectionDisclosedState</key>
 	<true/>
 	<key>SidebarSharedSectionDisclosedState</key>
 	<true/>
@@ -394,7 +342,7 @@
 	<key>TotalFinderAlwaysMaximize</key>
 	<false/>
 	<key>TotalFinderAnimationSpeed</key>
-	<real>0.300000011920929</real>
+	<real>0.30000001192092896</real>
 	<key>TotalFinderAsepsisEnabled</key>
 	<true/>
 	<key>TotalFinderDisableNetworkStores</key>
@@ -429,13 +377,13 @@
 	<key>TotalFinderSavedWindowMaximized</key>
 	<false/>
 	<key>TotalFinderSavedWindowPosBottom</key>
-	<integer>1050</integer>
+	<integer>945</integer>
 	<key>TotalFinderSavedWindowPosLeft</key>
 	<integer>598</integer>
 	<key>TotalFinderSavedWindowPosRight</key>
 	<integer>1573</integer>
 	<key>TotalFinderSavedWindowPosTop</key>
-	<integer>127</integer>
+	<integer>22</integer>
 	<key>TotalFinderScreen</key>
 	<integer>0</integer>
 	<key>TotalFinderShortcuts</key>
@@ -490,95 +438,7 @@
 	<key>TotalFinderState</key>
 	<dict>
 		<key>Browsers</key>
-		<array>
-			<dict>
-				<key>SelectedTab</key>
-				<integer>1</integer>
-				<key>Tabs</key>
-				<dict>
-					<key>Contents</key>
-					<array>
-						<dict>
-							<key>Finder1</key>
-							<dict>
-								<key>BrowserViewState</key>
-								<dict>
-									<key>ListViewScrollOrigin</key>
-									<string>{0, 0}</string>
-								</dict>
-								<key>ShowPathbar</key>
-								<false/>
-								<key>ShowSidebar</key>
-								<true/>
-								<key>ShowStatusBar</key>
-								<true/>
-								<key>ShowToolbar</key>
-								<true/>
-								<key>SidebarWidth</key>
-								<integer>136</integer>
-								<key>TargetPath</key>
-								<array>
-									<string>file://localhost/Users/darwin/</string>
-								</array>
-								<key>TargetURL</key>
-								<string>file://localhost/Users/darwin/</string>
-								<key>ViewStyle</key>
-								<string>List</string>
-								<key>WindowBounds</key>
-								<string>{{598, 150}, {975, 887}}</string>
-							</dict>
-							<key>Mode</key>
-							<string>Single</string>
-						</dict>
-						<dict>
-							<key>Finder1</key>
-							<dict>
-								<key>BrowserViewState</key>
-								<dict>
-									<key>ListViewScrollOrigin</key>
-									<string>{0, 2027}</string>
-								</dict>
-								<key>ShowPathbar</key>
-								<false/>
-								<key>ShowSidebar</key>
-								<true/>
-								<key>ShowStatusBar</key>
-								<true/>
-								<key>ShowToolbar</key>
-								<true/>
-								<key>SidebarWidth</key>
-								<integer>136</integer>
-								<key>TargetPath</key>
-								<array>
-									<string>file://localhost/Applications/</string>
-								</array>
-								<key>TargetURL</key>
-								<string>file://localhost/Applications/</string>
-								<key>ViewStyle</key>
-								<string>List</string>
-								<key>WindowBounds</key>
-								<string>{{598, 150}, {975, 887}}</string>
-							</dict>
-							<key>Mode</key>
-							<string>Single</string>
-						</dict>
-					</array>
-				</dict>
-				<key>Type</key>
-				<string>Window</string>
-				<key>Window</key>
-				<dict>
-					<key>Height</key>
-					<integer>923</integer>
-					<key>Width</key>
-					<integer>975</integer>
-					<key>X</key>
-					<integer>598</integer>
-					<key>Y</key>
-					<integer>150</integer>
-				</dict>
-			</dict>
-		</array>
+		<array/>
 	</dict>
 	<key>TotalFinderUpdateChannel</key>
 	<integer>0</integer>
@@ -593,11 +453,11 @@
 	<key>TotalFinderVisorOnDockLevel</key>
 	<false/>
 	<key>TotalFinderWorkAreaBottom</key>
-	<integer>1196</integer>
+	<integer>1046</integer>
 	<key>TotalFinderWorkAreaLeft</key>
 	<integer>0</integer>
 	<key>TotalFinderWorkAreaRight</key>
-	<integer>1920</integer>
+	<integer>1680</integer>
 	<key>TotalFinderWorkAreaTop</key>
 	<integer>22</integer>
 	<key>TrashViewSettings</key>
