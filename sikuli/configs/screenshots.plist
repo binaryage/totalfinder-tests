@@ -7,35 +7,7 @@
 	<key>BrowserWindowRestoreAttempted</key>
 	<false/>
 	<key>BrowserWindowState</key>
-	<array>
-		<dict>
-			<key>BrowserViewState</key>
-			<dict>
-				<key>ListViewScrollOrigin</key>
-				<string>{0, 0}</string>
-			</dict>
-			<key>ShowPathbar</key>
-			<false/>
-			<key>ShowSidebar</key>
-			<true/>
-			<key>ShowStatusBar</key>
-			<true/>
-			<key>ShowToolbar</key>
-			<true/>
-			<key>SidebarWidth</key>
-			<integer>137</integer>
-			<key>TargetPath</key>
-			<array>
-				<string>file://localhost/Volumes/P1/</string>
-			</array>
-			<key>TargetURL</key>
-			<string>file://localhost/Volumes/P1/</string>
-			<key>ViewStyle</key>
-			<string>List</string>
-			<key>WindowBounds</key>
-			<string>{{598, 105}, {975, 887}}</string>
-		</dict>
-	</array>
+	<array/>
 	<key>ComputerViewSettings</key>
 	<dict>
 		<key>WindowState</key>
@@ -143,9 +115,9 @@
 			<key>ShowToolbar</key>
 			<true/>
 			<key>SidebarWidth</key>
-			<integer>136</integer>
+			<integer>137</integer>
 			<key>WindowBounds</key>
-			<string>{{249, 156}, {975, 887}}</string>
+			<string>{{251, 205}, {973, 719}}</string>
 		</dict>
 	</dict>
 	<key>PackageViewSettings</key>
@@ -377,13 +349,13 @@
 	<key>TotalFinderSavedWindowMaximized</key>
 	<false/>
 	<key>TotalFinderSavedWindowPosBottom</key>
-	<integer>945</integer>
+	<integer>845</integer>
 	<key>TotalFinderSavedWindowPosLeft</key>
-	<integer>598</integer>
+	<integer>251</integer>
 	<key>TotalFinderSavedWindowPosRight</key>
-	<integer>1573</integer>
+	<integer>1224</integer>
 	<key>TotalFinderSavedWindowPosTop</key>
-	<integer>22</integer>
+	<integer>90</integer>
 	<key>TotalFinderScreen</key>
 	<integer>0</integer>
 	<key>TotalFinderShortcuts</key>
@@ -438,7 +410,63 @@
 	<key>TotalFinderState</key>
 	<dict>
 		<key>Browsers</key>
-		<array/>
+		<array>
+			<dict>
+				<key>SelectedTab</key>
+				<integer>0</integer>
+				<key>Tabs</key>
+				<dict>
+					<key>Contents</key>
+					<array>
+						<dict>
+							<key>Finder1</key>
+							<dict>
+								<key>BrowserViewState</key>
+								<dict>
+									<key>ListViewScrollOrigin</key>
+									<string>{0, 0}</string>
+								</dict>
+								<key>ShowPathbar</key>
+								<false/>
+								<key>ShowSidebar</key>
+								<true/>
+								<key>ShowStatusBar</key>
+								<true/>
+								<key>ShowToolbar</key>
+								<true/>
+								<key>SidebarWidth</key>
+								<integer>137</integer>
+								<key>TargetPath</key>
+								<array>
+									<string>file://localhost/Users/darwin/</string>
+								</array>
+								<key>TargetURL</key>
+								<string>file://localhost/Users/darwin/</string>
+								<key>ViewStyle</key>
+								<string>List</string>
+								<key>WindowBounds</key>
+								<string>{{251, 205}, {973, 719}}</string>
+							</dict>
+							<key>Mode</key>
+							<string>Single</string>
+						</dict>
+					</array>
+				</dict>
+				<key>Type</key>
+				<string>Window</string>
+				<key>Window</key>
+				<dict>
+					<key>Height</key>
+					<integer>755</integer>
+					<key>Width</key>
+					<integer>973</integer>
+					<key>X</key>
+					<integer>251</integer>
+					<key>Y</key>
+					<integer>205</integer>
+				</dict>
+			</dict>
+		</array>
 	</dict>
 	<key>TotalFinderUpdateChannel</key>
 	<integer>0</integer>

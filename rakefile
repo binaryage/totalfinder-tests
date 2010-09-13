@@ -85,7 +85,7 @@ def relaunch_totalfinder(options, language)
     IO.popen('/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder -AppleLanguages "('+language+',English)" 2&> /dev/null')
     sleep 2
     sys('open /Applications/TotalFinder.app')
-    sleep 2
+    sleep 3
     
     # set the bounds
     sys('osascript -e "tell application \\"Finder\\" to activate"')
