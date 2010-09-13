@@ -1,9 +1,7 @@
-# TODO: http://www.cocoabuilder.com/archive/cocoa/2895-forcing-bundle-localization-at-runtime.html
-# /Applications/TextEdit.app/Contents/MacOS/TextEdit -AppleLanguages "(German, French, English )"
-
 require 'rake'
 require 'json'
 require "open3"
+require "plist"
 include Open3
 
 ################################################################################################
@@ -162,6 +160,27 @@ def execute_story(dir, options = {})
     #sys('osascript -e "tell application \"Finder\" to quit"')
 end
 
+# do some post-processing
+def cleanup_plist(path)
+    # see http://github.com/bleything/plist
+    l = Plist::parse_xml(path)
+    
+    # make sure we don't leak license keys
+    l.delete("TotalFinderLicenseKey")
+    l.delete("TotalFinderLicenseName")
+    
+    # remove garbage
+    l.delete("FXDesktopVolumePositions")
+    l.delete("FXPreferencesWindow.Location")
+    l.delete("FXRecentFolders")
+    l.delete("PreferencesWindow.LastSelection")
+    
+    # save it back
+    File.open(path, "w") do |f|
+      f << l.to_plist
+    end
+end
+
 ################################################################################################
 # tasks
 
@@ -197,6 +216,14 @@ task :config do
     path = make_unique_path(File.join(CONFIGS_DIR, name))
     sys("cp \"#{PLIST_PATH}\" \"#{path}\"")
     sys("plutil -convert xml1 \"#{path}\"")
+    cleanup_plist(path)
 end
+
+task :clean_configs do
+    Dir.glob(File.join(CONFIGS_DIR, "*.plist")) do |path|
+        cleanup_plist(path)
+    end
+end
+
 
 task :default => :test
