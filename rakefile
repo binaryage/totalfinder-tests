@@ -225,5 +225,23 @@ task :clean_configs do
     end
 end
 
+desc "act normally"
+task :actnormal do
+    sys('defaults write com.apple.Finder "TotalFinderActAsExpired" -bool no')
+    sys('defaults write com.apple.Finder "TotalFinderActAsFinal" -bool no')
+    sys('defaults write com.apple.Finder "TotalFinderAlphaReminderShown" -bool no')
+end
+
+desc "act as expired"
+task :actexpired do
+    sys('defaults write com.apple.Finder "TotalFinderActAsExpired" -bool yes')
+    sys('defaults write com.apple.Finder "TotalFinderActAsFinal" -bool no')
+end
+
+desc "act as final version"
+task :actfinal do
+    sys('defaults write com.apple.Finder "TotalFinderActAsExpired" -bool no')
+    sys('defaults write com.apple.Finder "TotalFinderActAsFinal" -bool yes')
+end
 
 task :default => :test
