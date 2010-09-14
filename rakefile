@@ -73,7 +73,22 @@ def expand_config_path(name)
     path
 end
 
-def relaunch_totalfinder(options, language)
+# see http://github.com/bleything/plist
+def set_license(path)
+  l = Plist::parse_xml(path)
+  
+  die "~/totalfinder-sample-license.txt does not exist!" unless File.exists? File.expand_path("~/totalfinder-sample-license.txt")
+  
+  l["TotalFinderLicenseName"] = "Antonin Hildebrand"
+  l["TotalFinderLicenseKey"] = `cat ~/totalfinder-sample-license.txt`
+  
+  # save it back
+  File.open(path, "w") do |f|
+    f << l.to_plist
+  end
+end
+
+def relaunch_totalfinder(options, language, license=true)
     puts options.to_json
     
     sys('osascript -e "tell application \\"Finder\\" to quit"')
@@ -81,6 +96,7 @@ def relaunch_totalfinder(options, language)
     
     config_path = expand_config_path(options["config"])
     sys("cp \"#{config_path}\" \"#{PLIST_PATH}\"")
+    set_license(PLIST_PATH) if license
     
     IO.popen('/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder -AppleLanguages "('+language+',English)" 2&> /dev/null')
     sleep 2
