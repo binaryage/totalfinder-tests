@@ -261,4 +261,13 @@ task :actfinal do
     sys('defaults write com.apple.Finder "TotalFinderActAsFinal" -bool yes')
 end
 
+desc "rsync products to whale"
+task :sync do
+    sys("mkdir -p tfdata")
+    sys("mount -t smbfs //guest:@whale/Store/tfdata tfdata")
+    sys("rsync -av --delete products tfdata")
+    sys("umount tfdata")
+    sys("rm -rf tfdata")
+end
+
 task :default => :test

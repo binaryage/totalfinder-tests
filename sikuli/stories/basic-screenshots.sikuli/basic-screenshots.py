@@ -3,8 +3,9 @@ import time
 switchApp("Finder")
 type("t", KEY_CMD)
 click("../../shared/binaryage-item.png")
+click("../../shared/list-view-icon.png")
 type("t", KEY_CMD)
-click("../../shared/website-item.png")
+click("../../shared/downloads-item.png")
 type("[", KEY_CMD + KEY_SHIFT)
 
 def take_shot():
@@ -30,6 +31,8 @@ def grab_dual_mode():
     type("u", KEY_CMD)
 
     o = findAll("../../shared/website-item.png")
+    click(o[1])
+    o = findAll("../../shared/column-view-icon.png")
     click(o[1])
     
     hover("../../shared/tab-plus.png")
