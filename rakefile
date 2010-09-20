@@ -62,8 +62,8 @@ end
 
 $defaults = {
     "config" => "default",
-    "width" => 930,
-    "height" => 600,
+    "width" => 936,
+    "height" => 500,
     "languages" => ["English"]
 }
 
@@ -190,6 +190,7 @@ def cleanup_plist(path)
     l.delete("FXPreferencesWindow.Location")
     l.delete("FXRecentFolders")
     l.delete("PreferencesWindow.LastSelection")
+    l.delete("BrowserWindowState")
     
     # save it back
     File.open(path, "w") do |f|

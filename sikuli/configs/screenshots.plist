@@ -3,11 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AppleShowAllFiles</key>
-	<false/>
+	<true/>
 	<key>BrowserWindowRestoreAttempted</key>
 	<false/>
-	<key>BrowserWindowState</key>
-	<array/>
 	<key>ComputerViewSettings</key>
 	<dict>
 		<key>WindowState</key>
@@ -117,7 +115,7 @@
 			<key>SidebarWidth</key>
 			<integer>137</integer>
 			<key>WindowBounds</key>
-			<string>{{251, 205}, {973, 719}}</string>
+			<string>{{283, 139}, {973, 719}}</string>
 		</dict>
 	</dict>
 	<key>PackageViewSettings</key>
@@ -231,7 +229,7 @@
 					<key>visible</key>
 					<true/>
 					<key>width</key>
-					<integer>181</integer>
+					<integer>80</integer>
 				</dict>
 				<key>kind</key>
 				<dict>
@@ -264,7 +262,7 @@
 					<key>visible</key>
 					<true/>
 					<key>width</key>
-					<integer>300</integer>
+					<integer>166</integer>
 				</dict>
 				<key>size</key>
 				<dict>
@@ -275,7 +273,7 @@
 					<key>visible</key>
 					<true/>
 					<key>width</key>
-					<integer>97</integer>
+					<integer>65</integer>
 				</dict>
 				<key>version</key>
 				<dict>
@@ -290,13 +288,13 @@
 				</dict>
 			</dict>
 			<key>iconSize</key>
-			<integer>16</integer>
+			<real>16.0</real>
 			<key>showIconPreview</key>
 			<true/>
 			<key>sortColumn</key>
 			<string>name</string>
 			<key>textSize</key>
-			<integer>12</integer>
+			<real>12.0</real>
 			<key>useRelativeDates</key>
 			<true/>
 			<key>viewOptionsVersion</key>
@@ -308,7 +306,7 @@
 	<key>TotalFinderActAsExpired</key>
 	<false/>
 	<key>TotalFinderActAsFinal</key>
-	<false/>
+	<true/>
 	<key>TotalFinderAlphaReminderShown</key>
 	<true/>
 	<key>TotalFinderAlwaysMaximize</key>
@@ -324,7 +322,7 @@
 	<key>TotalFinderDontMakeTabs</key>
 	<false/>
 	<key>TotalFinderFoldersOnTop</key>
-	<false/>
+	<true/>
 	<key>TotalFinderHideOnEscape</key>
 	<false/>
 	<key>TotalFinderHotKey2</key>
@@ -349,13 +347,13 @@
 	<key>TotalFinderSavedWindowMaximized</key>
 	<false/>
 	<key>TotalFinderSavedWindowPosBottom</key>
-	<integer>845</integer>
+	<integer>500</integer>
 	<key>TotalFinderSavedWindowPosLeft</key>
-	<integer>251</integer>
+	<integer>100</integer>
 	<key>TotalFinderSavedWindowPosRight</key>
-	<integer>1224</integer>
+	<integer>936</integer>
 	<key>TotalFinderSavedWindowPosTop</key>
-	<integer>90</integer>
+	<integer>129</integer>
 	<key>TotalFinderScreen</key>
 	<integer>0</integer>
 	<key>TotalFinderShortcuts</key>
@@ -403,6 +401,8 @@
 			<integer>524288</integer>
 		</dict>
 	</dict>
+	<key>TotalFinderShowDesktopDotFiles</key>
+	<false/>
 	<key>TotalFinderShowOnReopen</key>
 	<true/>
 	<key>TotalFinderShowStatusItem</key>
@@ -435,7 +435,7 @@
 								<key>ShowToolbar</key>
 								<true/>
 								<key>SidebarWidth</key>
-								<integer>137</integer>
+								<integer>192</integer>
 								<key>TargetPath</key>
 								<array>
 									<string>file://localhost/Users/darwin/</string>
@@ -445,7 +445,7 @@
 								<key>ViewStyle</key>
 								<string>List</string>
 								<key>WindowBounds</key>
-								<string>{{251, 205}, {973, 719}}</string>
+								<string>{{100, 550}, {836, 335}}</string>
 							</dict>
 							<key>Mode</key>
 							<string>Single</string>
@@ -457,19 +457,19 @@
 				<key>Window</key>
 				<dict>
 					<key>Height</key>
-					<integer>755</integer>
+					<integer>371</integer>
 					<key>Width</key>
-					<integer>973</integer>
+					<integer>836</integer>
 					<key>X</key>
-					<integer>251</integer>
+					<integer>100</integer>
 					<key>Y</key>
-					<integer>205</integer>
+					<integer>550</integer>
 				</dict>
 			</dict>
 		</array>
 	</dict>
 	<key>TotalFinderUpdateChannel</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>TotalFinderUseFade</key>
 	<true/>
 	<key>TotalFinderUseSlide</key>
