@@ -70,7 +70,7 @@
 		<true/>
 	</dict>
 	<key>FXPreferredViewStyle</key>
-	<string>clmv</string>
+	<string>Nlsv</string>
 	<key>FlowViewHeight</key>
 	<string>612</string>
 	<key>NSToolbar Configuration Browser</key>
@@ -343,7 +343,7 @@
 	<key>TotalFinderPosition</key>
 	<string>Bottom-Stretch</string>
 	<key>TotalFinderSavedVisorHeight</key>
-	<integer>622</integer>
+	<integer>348</integer>
 	<key>TotalFinderSavedWindowMaximized</key>
 	<false/>
 	<key>TotalFinderSavedWindowPosBottom</key>
@@ -351,7 +351,7 @@
 	<key>TotalFinderSavedWindowPosLeft</key>
 	<integer>100</integer>
 	<key>TotalFinderSavedWindowPosRight</key>
-	<integer>550</integer>
+	<integer>1036</integer>
 	<key>TotalFinderSavedWindowPosTop</key>
 	<integer>129</integer>
 	<key>TotalFinderScreen</key>
@@ -423,8 +423,8 @@
 							<dict>
 								<key>BrowserViewState</key>
 								<dict>
-									<key>IconViewScrollOrigin</key>
-									<string>{0, 1}</string>
+									<key>ListViewScrollOrigin</key>
+									<string>{0, 0}</string>
 								</dict>
 								<key>ShowPathbar</key>
 								<false/>
@@ -443,9 +443,9 @@
 								<key>TargetURL</key>
 								<string>file://localhost/Users/darwin/</string>
 								<key>ViewStyle</key>
-								<string>Icon</string>
+								<string>List</string>
 								<key>WindowBounds</key>
-								<string>{{100, 522}, {450, 363}}</string>
+								<string>{{100, 522}, {936, 363}}</string>
 							</dict>
 							<key>Mode</key>
 							<string>Single</string>
@@ -459,7 +459,7 @@
 					<key>Height</key>
 					<integer>399</integer>
 					<key>Width</key>
-					<integer>450</integer>
+					<integer>936</integer>
 					<key>X</key>
 					<integer>100</integer>
 					<key>Y</key>
@@ -481,7 +481,7 @@
 	<key>TotalFinderVisorOnDockLevel</key>
 	<false/>
 	<key>TotalFinderWorkAreaBottom</key>
-	<integer>1046</integer>
+	<integer>959</integer>
 	<key>TotalFinderWorkAreaLeft</key>
 	<integer>0</integer>
 	<key>TotalFinderWorkAreaRight</key>

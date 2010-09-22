@@ -55,6 +55,10 @@ def toggle_folders_on_top():
 
 def toggle_system_files():
     type(".", KEY_CMD + KEY_SHIFT)
+
+def toggle_visor():
+    type("`", KEY_ALT)
+    sleep(2)
     
 #######################################################     
 # grab the main screenshot with tabs
@@ -69,6 +73,29 @@ def grab_main():
 
     close_tab()
     close_tab()
+
+#######################################################     
+# grab the main screenshot with tabs
+def grab_visor():
+    close_tab()
+    toggle_visor()
+
+    new_tab()
+    click("../../shared/applications-icon.png")
+    ensure_view("list")
+    new_tab()
+    click("../../shared/downloads-item.png")
+    select_prev_tab()
+    grab_window()
+    
+    hover("../../shared/finder-dock-icon.png")
+    take_shot()
+
+    close_tab()
+    close_tab()
+    close_tab()
+
+    new_tab()
 
 #######################################################     
 # grab the dual-mode screenshot
@@ -183,6 +210,7 @@ def grab_preferences():
 switchApp("Finder")
 
 grab_main()
+grab_visor()
 grab_dual_mode()
 grab_folders_on_top()
 grab_show_system_files()
