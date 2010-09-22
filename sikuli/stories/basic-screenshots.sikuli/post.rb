@@ -69,13 +69,15 @@ grab_dir = File.expand_path("~/Desktop") if grab_dir =~ /does not exist/
 
 list = Dir.list({:directory => grab_dir, :pattern => "*.png", :order => 'DESC'})
 
-list = list[0..20].reverse
+list = list[0..24].reverse
 puts list
 
 compose_screenshot(list, "tabs.png")
 compose_dual_screenshot(list, "dual-mode.png")
 compose_screenshot(list, "folders-on-top-enabled.png")
 compose_screenshot(list, "folders-on-top-disabled.png")
+compose_screenshot(list, "system-files-enabled.png")
+compose_screenshot(list, "system-files-disabled.png")
 
 crop_screenshot(list, "main-menu.png", 0, 0, 750, 0)
 

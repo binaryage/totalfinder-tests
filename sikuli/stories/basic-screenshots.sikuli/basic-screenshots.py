@@ -109,6 +109,22 @@ def grab_folders_on_top():
     # return to initial state
     toggle_folders_on_top()
 
+def grab_show_system_files():
+    resize(450, 400)
+
+    click("../../shared/binaryage-item.png")
+    ensure_view("list")
+
+    # grab window without system files
+    grab_window()
+
+    # grab window with system files
+    toggle_system_files()
+    grab_window()
+
+    # return to initial state
+    toggle_system_files()
+
 #######################################################     
 # main menu
 def grab_main_menu():
@@ -169,6 +185,7 @@ switchApp("Finder")
 grab_main()
 grab_dual_mode()
 grab_folders_on_top()
+grab_show_system_files()
 grab_main_menu()
 grab_menus()
 grab_preferences()
