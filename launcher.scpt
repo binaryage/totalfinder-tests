@@ -1,0 +1,1 @@
+tell application "Finder" to «event BATFinit»

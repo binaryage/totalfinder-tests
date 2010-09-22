@@ -99,9 +99,10 @@ def relaunch_totalfinder(options, language, license=true)
     set_license(PLIST_PATH) if license
     
     IO.popen('/System/Library/CoreServices/Finder.app/Contents/MacOS/Finder -AppleLanguages "('+language+',English)" 2&> /dev/null')
-    sleep 2
-    sys('open /Applications/TotalFinder.app')
-    sleep 3
+    sleep 1
+    #sys('open /Applications/TotalFinder.app')
+    sys('osascript launcher.scpt')
+    sleep 1
     
     # set the bounds
     sys('osascript -e "tell application \\"Finder\\" to activate"')
@@ -229,6 +230,8 @@ end
 
 desc "copies current config and saves it into configs"
 task :config do
+    sys('osascript -e "tell application \\"Finder\\" to quit"')
+    sleep 2
     name = ENV["name"] || "config.plist"
     path = make_unique_path(File.join(CONFIGS_DIR, name))
     sys("cp \"#{PLIST_PATH}\" \"#{path}\"")

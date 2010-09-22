@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AppleShowAllFiles</key>
-	<true/>
+	<false/>
 	<key>BrowserWindowRestoreAttempted</key>
 	<false/>
 	<key>ComputerViewSettings</key>
@@ -238,7 +238,7 @@
 					<key>index</key>
 					<integer>4</integer>
 					<key>visible</key>
-					<true/>
+					<false/>
 					<key>width</key>
 					<integer>115</integer>
 				</dict>
@@ -347,11 +347,11 @@
 	<key>TotalFinderSavedWindowMaximized</key>
 	<false/>
 	<key>TotalFinderSavedWindowPosBottom</key>
-	<integer>500</integer>
+	<integer>528</integer>
 	<key>TotalFinderSavedWindowPosLeft</key>
 	<integer>100</integer>
 	<key>TotalFinderSavedWindowPosRight</key>
-	<integer>936</integer>
+	<integer>550</integer>
 	<key>TotalFinderSavedWindowPosTop</key>
 	<integer>129</integer>
 	<key>TotalFinderScreen</key>
@@ -423,8 +423,8 @@
 							<dict>
 								<key>BrowserViewState</key>
 								<dict>
-									<key>ListViewScrollOrigin</key>
-									<string>{0, 0}</string>
+									<key>IconViewScrollOrigin</key>
+									<string>{0, 1}</string>
 								</dict>
 								<key>ShowPathbar</key>
 								<false/>
@@ -435,7 +435,7 @@
 								<key>ShowToolbar</key>
 								<true/>
 								<key>SidebarWidth</key>
-								<integer>192</integer>
+								<integer>137</integer>
 								<key>TargetPath</key>
 								<array>
 									<string>file://localhost/Users/darwin/</string>
@@ -443,9 +443,9 @@
 								<key>TargetURL</key>
 								<string>file://localhost/Users/darwin/</string>
 								<key>ViewStyle</key>
-								<string>List</string>
+								<string>Icon</string>
 								<key>WindowBounds</key>
-								<string>{{100, 550}, {836, 335}}</string>
+								<string>{{100, 522}, {450, 363}}</string>
 							</dict>
 							<key>Mode</key>
 							<string>Single</string>
@@ -457,13 +457,13 @@
 				<key>Window</key>
 				<dict>
 					<key>Height</key>
-					<integer>371</integer>
+					<integer>399</integer>
 					<key>Width</key>
-					<integer>836</integer>
+					<integer>450</integer>
 					<key>X</key>
 					<integer>100</integer>
 					<key>Y</key>
-					<integer>550</integer>
+					<integer>522</integer>
 				</dict>
 			</dict>
 		</array>

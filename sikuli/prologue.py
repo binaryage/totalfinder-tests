@@ -1,5 +1,7 @@
 # this file gets prepended before every sikuli script in stories dir by rakefile launcher
 
+# sudo easy_install appscript
+
 from sikuli import *
 
 KEY_ALT = 1
@@ -53,4 +55,48 @@ def switchApp(name):
     import time
     os.system('osascript -e "tell application \\"'+name+'\\" to activate"')
     time.sleep(2)
+
+def sys(cmd):
+    import os
+    import time
+    os.system(cmd)
+    time.sleep(1)
     
+def sleep(n=0.2):
+    import time
+    time.sleep(n)
+
+# def press(keycode, modifiers=0):
+#     import appscript
+#     import time
+#     u = []
+#     if (modifiers&KEY_CMD): 
+#         u.append(appscript.k.command_down)
+#     if (modifiers&KEY_CTRL): 
+#         u.append(appscript.k.control_down)
+#     if (modifiers&KEY_META): 
+#         u.append(appscript.k.option_down)
+#     if (modifiers&KEY_SHIFT): 
+#         u.append(appscript.k.shift_down)
+#     print "press: "+keycode+str(u)
+#     appscript.app('System Events').keystroke(chr(keycode), using=u)
+#     time.sleep(1)
+#     
+# 
+# def type(keys, modifiers=0):
+#     import appscript
+#     import time
+#     u = []
+#     if (modifiers&KEY_CMD): 
+#         u.append(appscript.k.command_down)
+#     if (modifiers&KEY_CTRL): 
+#         u.append(appscript.k.control_down)
+#     if (modifiers&KEY_META): 
+#         u.append(appscript.k.option_down)
+#     if (modifiers&KEY_SHIFT): 
+#         u.append(appscript.k.shift_down)
+#     for c in keys:
+#         print "!"+c+str(u)
+#         appscript.app('System Events').keystroke(c, using=u)
+#     time.sleep(1)
+        

@@ -57,8 +57,8 @@ def compose_dual_screenshot(list, name)
     image1 = ImageList.new(chrome)
     image2 = ImageList.new(left)
     image3 = ImageList.new(right)
-    result = image1.composite(image2, Magick::SouthEastGravity, 40, 55, Magick::OverCompositeOp)
-    result2 = result.composite(image3, Magick::SouthWestGravity, 40, 55, Magick::OverCompositeOp)
+    result = image1.composite(image2, Magick::SouthWestGravity, 40, 55, Magick::OverCompositeOp)
+    result2 = result.composite(image3, Magick::SouthEastGravity, 40, 55, Magick::OverCompositeOp)
     result2.write(name)
 end
 
@@ -69,11 +69,13 @@ grab_dir = File.expand_path("~/Desktop") if grab_dir =~ /does not exist/
 
 list = Dir.list({:directory => grab_dir, :pattern => "*.png", :order => 'DESC'})
 
-list = list[0..16].reverse
+list = list[0..20].reverse
 puts list
 
 compose_screenshot(list, "tabs.png")
 compose_dual_screenshot(list, "dual-mode.png")
+compose_screenshot(list, "folders-on-top-enabled.png")
+compose_screenshot(list, "folders-on-top-disabled.png")
 
 crop_screenshot(list, "main-menu.png", 0, 0, 750, 0)
 

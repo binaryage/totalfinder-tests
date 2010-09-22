@@ -1,40 +1,20 @@
 import time
 
-switchApp("Finder")
-type("t", KEY_CMD)
-click("../../shared/binaryage-item.png")
-click("../../shared/list-view-icon.png")
-type("t", KEY_CMD)
-click("../../shared/downloads-item.png")
-type("[", KEY_CMD + KEY_SHIFT)
-
 def take_shot():
     type("4", KEY_CMD + KEY_SHIFT)
     type(" ")
     mouseDown(Button.LEFT)
     mouseUp(Button.LEFT)
-
-#######################################################     
-# grab the main screenshot with tabs
+    
 # we need to do 2x screenshot with shadow to capture chrome+child windows
-def grab_main():
+def grab_window():
     hover("../../shared/tab-plus.png")
     take_shot()
     hover("../../shared/search-box.png")
     take_shot()
 
-#######################################################     
-# grab the dual-mode screenshot
 # we need to do 3x screenshot with shadow to capture chrome+both child windows
-def grab_dual_mode():
-    # enter dual mode
-    type("u", KEY_CMD)
-
-    o = findAll("../../shared/website-item.png")
-    click(o[1])
-    o = findAll("../../shared/column-view-icon.png")
-    click(o[1])
-    
+def grab_dual_window():
     hover("../../shared/tab-plus.png")
     take_shot()
 
@@ -47,9 +27,87 @@ def grab_dual_mode():
     if o[1]:
         hover(o[1])
         take_shot()
+        
+def ensure_view(type="list"):
+    o = findAll("../../shared/"+type+"-view-icon.png")
+    for icon in o: # may be already selected
+        click(icon)
+
+def new_tab():
+    type("t", KEY_CMD)
+    sleep(1)
+
+def close_tab():
+    type("w", KEY_CMD)
+    sleep(1)
+
+def select_next_tab():
+    type("]", KEY_CMD + KEY_SHIFT)
+
+def select_prev_tab():
+    type("[", KEY_CMD + KEY_SHIFT)
+
+def resize(w, h):
+    sys("osascript -e \"tell application \\\"Finder\\\" to set the bounds of the first window to {100, 100, "+str(100+w)+", "+str(100+h+28)+"}\"")
+    
+def toggle_folders_on_top():
+    type(";", KEY_CMD + KEY_SHIFT)
+
+def toggle_system_files():
+    type(".", KEY_CMD + KEY_SHIFT)
+    
+#######################################################     
+# grab the main screenshot with tabs
+def grab_main():
+    new_tab()
+    click("../../shared/applications-icon.png")
+    ensure_view("icon")
+    new_tab()
+    click("../../shared/downloads-item.png")
+    select_prev_tab()
+    grab_window()
+
+    close_tab()
+    close_tab()
+
+#######################################################     
+# grab the dual-mode screenshot
+def grab_dual_mode():
+    new_tab()
+    click("../../shared/binaryage-item.png")
+    ensure_view("list")
+
+    new_tab()
+    click("../../shared/website-item.png")
+    ensure_view("column")
+
+    # enter dual mode
+    select_prev_tab()
+    type("u", KEY_CMD)
+
+    grab_dual_window()
     
     # exit dual mode
     type("u", KEY_CMD)
+    
+    close_tab()
+    close_tab()
+    
+def grab_folders_on_top():
+    resize(450, 400)
+    
+    click("../../shared/binaryage-item.png")
+    ensure_view("list")
+    
+    # grab window with folders on top
+    grab_window()
+    
+    # grab window without folders on top
+    toggle_folders_on_top()
+    grab_window()
+    
+    # return to initial state
+    toggle_folders_on_top()
 
 #######################################################     
 # main menu
@@ -62,6 +120,7 @@ def grab_main_menu():
 def grab_menus():
     def next_menu():
         press(KEY_RIGHT)
+        sleep(1)
         hover("../../shared/selected-top-menu-item.png")
         take_shot()
 
@@ -105,8 +164,11 @@ def grab_preferences():
 
 #######################################################     
     
+switchApp("Finder")
+
 grab_main()
 grab_dual_mode()
+grab_folders_on_top()
 grab_main_menu()
 grab_menus()
 grab_preferences()
