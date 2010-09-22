@@ -63,7 +63,7 @@ end
 $defaults = {
     "config" => "default",
     "width" => 936,
-    "height" => 500,
+    "height" => 400,
     "languages" => ["English"]
 }
 
@@ -105,7 +105,7 @@ def relaunch_totalfinder(options, language, license=true)
     
     # set the bounds
     sys('osascript -e "tell application \\"Finder\\" to activate"')
-    sys('osascript -e "tell application \\"Finder\\" to set the bounds of the first window to {100, 100, '+options["width"].to_s+', '+options["height"].to_s+'}"')
+    sys('osascript -e "tell application \\"Finder\\" to set the bounds of the first window to {100, 100, '+(100+options["width"]).to_s+', '+(100+options["height"]+28).to_s+'}"')
 end
 
 def run_story(path, language)
