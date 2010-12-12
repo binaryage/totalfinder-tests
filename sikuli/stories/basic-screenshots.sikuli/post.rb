@@ -104,8 +104,8 @@ compose_visor_screenshot(list, "visor.png")
 compose_dual_screenshot(list, "dual-mode.png")
 compose_screenshot(list, "folders-on-top-enabled.png")
 compose_screenshot(list, "folders-on-top-disabled.png")
-compose_screenshot(list, "system-files-enabled.png")
 compose_screenshot(list, "system-files-disabled.png")
+compose_screenshot(list, "system-files-enabled.png")
 
 crop_screenshot(list, "main-menu.png", 0, 0, 750, 0)
 
