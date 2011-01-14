@@ -3,6 +3,7 @@
 # sudo easy_install appscript
 
 from sikuli import *
+import time
 
 KEY_ALT = 1
 KEY_CMD = 2
@@ -66,37 +67,62 @@ def sleep(n=0.2):
     import time
     time.sleep(n)
 
-# def press(keycode, modifiers=0):
-#     import appscript
-#     import time
-#     u = []
-#     if (modifiers&KEY_CMD): 
-#         u.append(appscript.k.command_down)
-#     if (modifiers&KEY_CTRL): 
-#         u.append(appscript.k.control_down)
-#     if (modifiers&KEY_META): 
-#         u.append(appscript.k.option_down)
-#     if (modifiers&KEY_SHIFT): 
-#         u.append(appscript.k.shift_down)
-#     print "press: "+keycode+str(u)
-#     appscript.app('System Events').keystroke(chr(keycode), using=u)
-#     time.sleep(1)
-#     
-# 
-# def type(keys, modifiers=0):
-#     import appscript
-#     import time
-#     u = []
-#     if (modifiers&KEY_CMD): 
-#         u.append(appscript.k.command_down)
-#     if (modifiers&KEY_CTRL): 
-#         u.append(appscript.k.control_down)
-#     if (modifiers&KEY_META): 
-#         u.append(appscript.k.option_down)
-#     if (modifiers&KEY_SHIFT): 
-#         u.append(appscript.k.shift_down)
-#     for c in keys:
-#         print "!"+c+str(u)
-#         appscript.app('System Events').keystroke(c, using=u)
-#     time.sleep(1)
-        
+def take_shot():
+    type("4", KEY_CMD + KEY_SHIFT)
+    type(" ")
+    mouseDown(Button.LEFT)
+    mouseUp(Button.LEFT)
+
+# we need to do 2x screenshot with shadow to capture chrome+child windows
+def grab_window():
+    hover("../../shared/tab-plus.png")
+    take_shot()
+    hover("../../shared/search-box.png")
+    take_shot()
+
+# we need to do 3x screenshot with shadow to capture chrome+both child windows
+def grab_dual_window():
+    hover("../../shared/tab-plus.png")
+    take_shot()
+
+    # in dual mode we need to grab left and right finder windows
+    o = findAll("../../shared/toolbar-back-forward.png")
+    if o[0]:
+        hover(o[0])
+        take_shot()
+
+    if o[1]:
+        hover(o[1])
+        take_shot()
+
+def ensure_view(type="list"):
+    o = findAll("../../shared/"+type+"-view-icon.png")
+    for icon in o: # may be already selected
+        click(icon)
+
+def new_tab():
+    type("t", KEY_CMD)
+    sleep(1)
+
+def close_tab():
+    type("w", KEY_CMD)
+    sleep(1)
+
+def select_next_tab():
+    type("]", KEY_CMD + KEY_SHIFT)
+
+def select_prev_tab():
+    type("[", KEY_CMD + KEY_SHIFT)
+
+def resize(w, h):
+    sys("osascript -e \"tell application \\\"Finder\\\" to set the bounds of the first window to {100, 100, "+str(100+w)+", "+str(100+h+28)+"}\"")
+
+def toggle_folders_on_top():
+    type(";", KEY_CMD + KEY_SHIFT)
+
+def toggle_system_files():
+    type(".", KEY_CMD + KEY_SHIFT)
+
+def toggle_visor():
+    type("`", KEY_ALT)
+    sleep(2)        

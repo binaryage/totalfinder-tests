@@ -228,6 +228,14 @@ task :screens do
     execute_story(story, { "languages" => langs })
 end
 
+desc "prepares showcase screenshots for homepage"
+task :showcase do
+    langs = ENV["langs"] || "English"
+    puts "running story " + "showcase.sikuli".green + " with languages " + langs.join(", ").yellow
+    story = File.join(STORIES_DIR, "showcase.sikuli")
+    execute_story(story, { "languages" => langs })
+end
+
 desc "copies current config and saves it into configs"
 task :config do
     sys('osascript -e "tell application \\"Finder\\" to quit"')
