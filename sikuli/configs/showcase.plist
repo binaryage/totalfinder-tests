@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AnimateWindowZoom</key>
+	<false/>
 	<key>AppleShowAllFiles</key>
 	<false/>
 	<key>BrowserWindowRestoreAttempted</key>
@@ -60,8 +62,12 @@
 			<integer>0</integer>
 		</dict>
 	</dict>
+	<key>DisableAllAnimations</key>
+	<true/>
 	<key>EmptyTrashProgressWindowLocation</key>
 	<string>760, 299</string>
+	<key>FXDisableFancyWindowTransition</key>
+	<true/>
 	<key>FXInfoPanesExpanded</key>
 	<dict>
 		<key>MetaData</key>
@@ -115,7 +121,7 @@
 			<key>SidebarWidth</key>
 			<integer>137</integer>
 			<key>WindowBounds</key>
-			<string>{{283, 139}, {973, 719}}</string>
+			<string>{{60, 79}, {750, 503}}</string>
 		</dict>
 	</dict>
 	<key>PackageViewSettings</key>
@@ -336,6 +342,8 @@
 	</dict>
 	<key>TotalFinderHotKey2Enabled</key>
 	<false/>
+	<key>TotalFinderHotKey2Mask</key>
+	<integer>524288</integer>
 	<key>TotalFinderNarrowTabsBar</key>
 	<false/>
 	<key>TotalFinderOnEverySpace</key>
@@ -343,17 +351,17 @@
 	<key>TotalFinderPosition</key>
 	<string>Bottom-Stretch</string>
 	<key>TotalFinderSavedVisorHeight</key>
-	<integer>348</integer>
+	<integer>367</integer>
 	<key>TotalFinderSavedWindowMaximized</key>
 	<false/>
 	<key>TotalFinderSavedWindowPosBottom</key>
-	<integer>528</integer>
+	<integer>561</integer>
 	<key>TotalFinderSavedWindowPosLeft</key>
-	<integer>100</integer>
+	<integer>60</integer>
 	<key>TotalFinderSavedWindowPosRight</key>
-	<integer>1036</integer>
+	<integer>810</integer>
 	<key>TotalFinderSavedWindowPosTop</key>
-	<integer>129</integer>
+	<integer>22</integer>
 	<key>TotalFinderScreen</key>
 	<integer>0</integer>
 	<key>TotalFinderShortcuts</key>
@@ -424,7 +432,7 @@
 								<key>BrowserViewState</key>
 								<dict>
 									<key>ListViewScrollOrigin</key>
-									<string>{0, 0}</string>
+									<string>{0, 380}</string>
 								</dict>
 								<key>ShowPathbar</key>
 								<false/>
@@ -445,7 +453,7 @@
 								<key>ViewStyle</key>
 								<string>List</string>
 								<key>WindowBounds</key>
-								<string>{{100, 522}, {936, 363}}</string>
+								<string>{{0, -266}, {1024, 331}}</string>
 							</dict>
 							<key>Mode</key>
 							<string>Single</string>
@@ -453,17 +461,17 @@
 					</array>
 				</dict>
 				<key>Type</key>
-				<string>Window</string>
+				<string>Visor</string>
 				<key>Window</key>
 				<dict>
 					<key>Height</key>
-					<integer>399</integer>
+					<integer>367</integer>
 					<key>Width</key>
-					<integer>936</integer>
+					<integer>1024</integer>
 					<key>X</key>
-					<integer>100</integer>
+					<integer>0</integer>
 					<key>Y</key>
-					<integer>522</integer>
+					<integer>79</integer>
 				</dict>
 			</dict>
 		</array>
@@ -481,11 +489,11 @@
 	<key>TotalFinderVisorOnDockLevel</key>
 	<false/>
 	<key>TotalFinderWorkAreaBottom</key>
-	<integer>959</integer>
+	<integer>561</integer>
 	<key>TotalFinderWorkAreaLeft</key>
 	<integer>0</integer>
 	<key>TotalFinderWorkAreaRight</key>
-	<integer>1680</integer>
+	<integer>1024</integer>
 	<key>TotalFinderWorkAreaTop</key>
 	<integer>22</integer>
 	<key>TrashViewSettings</key>

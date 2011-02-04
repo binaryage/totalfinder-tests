@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/local/bin/ruby
 
 require 'rubygems'
 begin
@@ -109,14 +109,22 @@ end
 
 grab_dir = `defaults read com.apple.screencapture location 2>&1`
 grab_dir = File.expand_path("~/Desktop") if grab_dir =~ /does not exist/
+grab_dir.strip!
+puts grab_dir.inspect
 
 list = Dir.list({:directory => grab_dir, :pattern => "*.png", :order => 'DESC'})
- 
-list = list[0...12].reverse
+puts list.size
+  
+list = list[0...17].reverse
 puts list
- 
-compose_screenshot(list, "showcase-tabs.png")
+
 compose_visor_screenshot(list, "showcase-visor.png")
+copy_screenshot(list, "desktop-showcase-visor.png")
+compose_screenshot(list, "showcase-tabs.png")
+copy_screenshot(list, "desktop-showcase-tabs.png")
 compose_dual_screenshot(list, "showcase-dual-mode.png")
+copy_screenshot(list, "desktop-showcase-dual-mode.png")
 compose_screenshot(list, "showcase-folders-on-top.png")
+copy_screenshot(list, "desktop-showcase-folders-on-top.png")
 compose_screenshot(list, "showcase-system-files.png")
+copy_screenshot(list, "desktop-showcase-system-files.png")

@@ -93,6 +93,8 @@ end
 
 grab_dir = `defaults read com.apple.screencapture location 2>&1`
 grab_dir = File.expand_path("~/Desktop") if grab_dir =~ /does not exist/
+grab_dir.strip!
+puts grab_dir.inspect
 
 list = Dir.list({:directory => grab_dir, :pattern => "*.png", :order => 'DESC'})
 

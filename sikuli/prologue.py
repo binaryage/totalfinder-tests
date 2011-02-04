@@ -73,6 +73,9 @@ def take_shot():
     mouseDown(Button.LEFT)
     mouseUp(Button.LEFT)
 
+def grab_screen():
+    type("3", KEY_CMD + KEY_SHIFT)
+
 # we need to do 2x screenshot with shadow to capture chrome+child windows
 def grab_window():
     press(KEY_PAGE_UP)
@@ -119,6 +122,9 @@ def select_prev_tab():
 
 def resize(w, h):
     sys("osascript -e \"tell application \\\"Finder\\\" to set the bounds of the first window to {100, 100, "+str(100+w)+", "+str(100+h+28)+"}\"")
+
+def resize_center(w, h, screenw=1024, screenh=640):
+    sys("osascript -e \"tell application \\\"Finder\\\" to set the bounds of the first window to {"+str(140)+", "+str(20)+", "+str(w)+", "+str(h)+"}\"")
 
 def toggle_folders_on_top():
     type(";", KEY_CMD + KEY_SHIFT)
