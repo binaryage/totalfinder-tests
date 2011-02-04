@@ -1,3 +1,5 @@
 {
-    "config": "showcase"
+    "config": "showcase",
+    "width": 740,
+    "height": 480
 }

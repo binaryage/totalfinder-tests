@@ -13,7 +13,6 @@ CONFIGS_DIR = File.join(SIKULI_DIR, 'configs')
 STORIES_DIR = File.join(SIKULI_DIR, 'stories')
 PLIST_PATH = File.expand_path("~/Library/Preferences/com.apple.finder.plist")
 PRODUCTS_DIR = File.expand_path(File.join(ROOT_DIR, "products"))
-SCREENS_DIR = File.expand_path(File.join(PRODUCTS_DIR, "screens"))
 TOTALFINDER_BUNDLE = "/Applications/TotalFinder.app/Contents/Resources/TotalFinder.bundle"
 TOTALFINDER_RESOURCES = File.join(TOTALFINDER_BUNDLE, "Contents", "Resources")
 FINDER_DIR = '/System/Library/CoreServices/Finder.app'
@@ -146,7 +145,7 @@ def run_story(path, language)
     
     `rm "#{target}"`
     
-    dest = File.join(SCREENS_DIR, language)
+    dest = File.join(PRODUCTS_DIR, base, language)
     
     # run optional ruby stript
     post = File.join(path, "post.rb")
@@ -199,16 +198,7 @@ def cleanup_plist(path)
     end
 end
 
-################################################################################################
-# tasks
-
-desc "runs tests"
-task :test do
-    puts "TODO".red
-end
-
-desc "prepares screenshots"
-task :screens do
+def get_langs
     langs = ENV["langs"] || "English"
     if langs=='all' then
         langs = []
@@ -223,6 +213,20 @@ task :screens do
     else
         langs = langs.split(",")
     end
+    langs
+end
+
+################################################################################################
+# tasks
+
+desc "runs tests"
+task :test do
+    puts "TODO".red
+end
+
+desc "prepares screenshots"
+task :screens do
+    langs = get_langs
     puts "running story " + "basic-screenshots.sikuli".green + " with languages " + langs.join(", ").yellow
     story = File.join(STORIES_DIR, "basic-screenshots.sikuli")
     execute_story(story, { "languages" => langs })
@@ -230,7 +234,7 @@ end
 
 desc "prepares showcase screenshots for homepage"
 task :showcase do
-    langs = ENV["langs"] || "English"
+    langs = get_langs
     puts "running story " + "showcase.sikuli".green + " with languages " + langs.join(", ").yellow
     story = File.join(STORIES_DIR, "showcase.sikuli")
     execute_story(story, { "languages" => langs })

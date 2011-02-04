@@ -27,6 +27,11 @@ end
 
 ##########################################################################################
 
+def thumb(image, name)
+    result5 = image.resize(500, 340, Magick::MitchellFilter);
+    result5.write("thumb-"+name)
+end
+
 def crop_screenshot(list, name, x, y, w, h)
     file = list.shift
     image = ImageList.new(file)
@@ -48,6 +53,7 @@ def compose_screenshot(list, name)
     image2 = ImageList.new(file2)
     result = image1.composite(image2, Magick::SouthGravity, 0, 55, Magick::OverCompositeOp)
     result.write(name)
+    thumb(result, name)
 end
 
 def compose_dual_screenshot(list, name)
@@ -60,6 +66,7 @@ def compose_dual_screenshot(list, name)
     result = image1.composite(image2, Magick::SouthWestGravity, 40, 55, Magick::OverCompositeOp)
     result2 = result.composite(image3, Magick::SouthEastGravity, 40, 55, Magick::OverCompositeOp)
     result2.write(name)
+    thumb(result2, name)
 end
 
 def compose_visor_screenshot(list, name)
@@ -84,9 +91,18 @@ def compose_visor_screenshot(list, name)
     result = chrome.composite(finder, Magick::SouthGravity, 40, 55, Magick::OverCompositeOp)
     result2 = bg.composite(result, Magick::NorthWestGravity, 0, 0, Magick::OverCompositeOp)
     result3 = result2.composite(dock, Magick::SouthWestGravity, 50, 0, Magick::OverCompositeOp)
+
+    result4 = Image.new(820, 559) do
+        self.background_color = "none"
+    end
+    result5 = result4.composite(result3, Magick::SouthWestGravity, 0, 50, Magick::OverCompositeOp) # -50px up
+
     # result3.add_compose_mask(mask2)
     # result4 = result3.composite(mask, Magick::NorthEastGravity, 0, 0, Magick::DissolveCompositeOp)
-    result3.write(name)
+    
+    
+    result5.write(name)
+    thumb(result5, name)
 end
 
 ##########################################################################################
@@ -94,30 +110,13 @@ end
 grab_dir = `defaults read com.apple.screencapture location 2>&1`
 grab_dir = File.expand_path("~/Desktop") if grab_dir =~ /does not exist/
 
-# list = Dir.list({:directory => grab_dir, :pattern => "*.png", :order => 'DESC'})
-# 
-# list = list[0..27].reverse
-# puts list
-# 
-# compose_screenshot(list, "tabs.png")
-# compose_visor_screenshot(list, "visor.png")
-# compose_dual_screenshot(list, "dual-mode.png")
-# compose_screenshot(list, "folders-on-top-enabled.png")
-# compose_screenshot(list, "folders-on-top-disabled.png")
-# compose_screenshot(list, "system-files-disabled.png")
-# compose_screenshot(list, "system-files-enabled.png")
-# 
-# crop_screenshot(list, "main-menu.png", 0, 0, 750, 0)
-# 
-# copy_screenshot(list, "menu-finder.png")
-# copy_screenshot(list, "menu-file.png")
-# copy_screenshot(list, "menu-edit.png")
-# copy_screenshot(list, "menu-view.png")
-# copy_screenshot(list, "menu-go.png")
-# copy_screenshot(list, "menu-window.png")
-# copy_screenshot(list, "menu-help.png")
-# 
-# copy_screenshot(list, "pref-visor.png")
-# copy_screenshot(list, "pref-asepsis.png")
-# copy_screenshot(list, "pref-tweaks.png")
-# copy_screenshot(list, "pref-about.png")
+list = Dir.list({:directory => grab_dir, :pattern => "*.png", :order => 'DESC'})
+ 
+list = list[0...12].reverse
+puts list
+ 
+compose_screenshot(list, "showcase-tabs.png")
+compose_visor_screenshot(list, "showcase-visor.png")
+compose_dual_screenshot(list, "showcase-dual-mode.png")
+compose_screenshot(list, "showcase-folders-on-top.png")
+compose_screenshot(list, "showcase-system-files.png")

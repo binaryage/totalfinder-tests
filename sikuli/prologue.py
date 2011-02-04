@@ -75,6 +75,9 @@ def take_shot():
 
 # we need to do 2x screenshot with shadow to capture chrome+child windows
 def grab_window():
+    press(KEY_PAGE_UP)
+    press(KEY_PAGE_UP)
+    press(KEY_PAGE_UP)
     hover("../../shared/tab-plus.png")
     take_shot()
     hover("../../shared/search-box.png")
